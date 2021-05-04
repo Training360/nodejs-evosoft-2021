@@ -1,5 +1,8 @@
-import { cloneDeep, sortBy } from 'lodash-es';
-// const _ = require('lodash');
+// ES module
+// import { cloneDeep, sortBy } from 'lodash-es';
+
+// Common module
+const { sortBy, cloneDeep } = require('lodash');
 
 // Sort users array
 const users = [
