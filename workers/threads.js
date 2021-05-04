@@ -19,9 +19,10 @@ function generatePrimes(start, range) {
     }
 }
 if (isMainThread) {
+    console.time('start');
     const max = 1e7;
     const threadCount = +process.argv[2] || 2;
-    const threads = new Set();;
+    const threads = new Set();
     console.log(`Running with ${threadCount} threads...`);
     const range = Math.ceil((max - min) / threadCount);
     let start = min;
@@ -37,7 +38,8 @@ if (isMainThread) {
             threads.delete(worker);
             console.log(`Thread exiting, ${threads.size} running...`);
             if (threads.size === 0) {
-                console.log(primes.join('\n'));
+                // console.log(primes.join('\n'));
+                console.timeEnd('start');
             }
         })
         worker.on('message', (msg) => {
